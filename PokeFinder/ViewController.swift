@@ -10,10 +10,11 @@ import UIKit
 import MapKit
 import FirebaseDatabase
 
-class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
+class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, PokedexTableVCDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     
+    lazy var slideInTransitioningDelegate = SlideInPresentationManager()
     let locationManager = CLLocationManager()
     var mapHasCenteredOnce = false
     var geoFire: GeoFire!
@@ -142,10 +143,23 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     }
 
     @IBAction func spotRandomPokemon(_ sender: Any) {
+        performSegue(withIdentifier: "PokedexSegue", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "PokedexSegue" {
+            let pokeTableVC = segue.destination as! PokedexTableVC
+            pokeTableVC.delegate = self
+            pokeTableVC.transitioningDelegate = slideInTransitioningDelegate
+            pokeTableVC.modalPresentationStyle = .custom
+        }
+    }
+    
+    func receivedPokeID(pokeIDFromTable: Int) {
         let loc = CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
-        let rand = arc4random_uniform(151) + 1
         
-        createSighting(forLocation: loc, withPokemon: Int(rand))
+        createSighting(forLocation: loc, withPokemon: pokeIDFromTable)
+        print(pokeIDFromTable)
     }
 
 }

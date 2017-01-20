@@ -49,11 +49,65 @@
                     </view>
                     <connections>
                         <outlet property="mapView" destination="hGa-GM-PZI" id="D8y-nQ-672"/>
+                        <segue destination="ZjO-T6-fTG" kind="presentation" identifier="PokedexSegue" id="x4R-zf-Iik"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="128.80000000000001" y="115.59220389805098"/>
+            <point key="canvasLocation" x="135" y="116"/>
+        </scene>
+        <!--Pokedex TableVC-->
+        <scene sceneID="nrr-wz-RLk">
+            <objects>
+                <tableViewController id="ZjO-T6-fTG" customClass="PokedexTableVC" customModule="PokeFinder" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="xoB-bF-RpZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="3PN-fz-Df1">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3PN-fz-Df1" id="yKk-Ae-2Mr">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PokedexCell" id="Yvb-Wc-R9u" customClass="PokedexCell" customModule="PokeFinder" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Yvb-Wc-R9u" id="J9V-az-bbu">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pokemon" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rkR-2o-trr">
+                                            <rect key="frame" x="8" y="8" width="359" height="27"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-UltraLightItalic" family="Avenir Next" pointSize="24"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="rkR-2o-trr" firstAttribute="bottom" secondItem="J9V-az-bbu" secondAttribute="bottomMargin" id="I0j-SW-PZ5"/>
+                                        <constraint firstItem="rkR-2o-trr" firstAttribute="leading" secondItem="J9V-az-bbu" secondAttribute="leadingMargin" id="j5w-oE-tQY"/>
+                                        <constraint firstItem="rkR-2o-trr" firstAttribute="top" secondItem="J9V-az-bbu" secondAttribute="topMargin" id="oeb-j9-wEh"/>
+                                        <constraint firstItem="rkR-2o-trr" firstAttribute="trailing" secondItem="J9V-az-bbu" secondAttribute="trailingMargin" id="z1E-y3-be7"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="name" destination="rkR-2o-trr" id="C2r-J3-TXu"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ZjO-T6-fTG" id="0Mf-Ux-Xgf"/>
+                            <outlet property="delegate" destination="ZjO-T6-fTG" id="NkQ-dH-abR"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I2A-3F-teK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="973.60000000000002" y="115.59220389805098"/>
         </scene>
     </scenes>
     <resources>
